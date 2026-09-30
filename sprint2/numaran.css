@@ -227,3 +227,19 @@ footer {
     color: var(--renk-yazi-acik);
     font-size: 0.85rem;
 }
+/* Tıklanabilir Kart Link Stilleri */
+a.kart-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.etkinlik-kart {
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.etkinlik-kart:hover,
+.etkinlik-kart:active {
+    background-color: #e2e8f0; /* Üzerine gelindiğinde veya dokunulduğunda hafif koyulaşma */
+}
