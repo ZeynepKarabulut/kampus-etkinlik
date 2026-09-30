@@ -3,41 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ana Sayfa - Etkinlik Uygulaması</title>
-    <link rel="stylesheet"href="numaran.css"
+    <title>Kampüs Etkinlikleri</title>
+    <link rel="stylesheet" href="numaran.css">
 </head>
 <body>
     <header>
-        <h1>Etkinlik Portalı</h1>
+        <h1>Kampüs Etkinlikleri</h1>
     </header>
-
     <nav>
-        <a href="index.html">Ana Sayfa</a> |
-        <a href="etkinlikler.html">Etkinlikler</a> |
-        <a href="etkinlik-ekle.html">Etkinlik Ekle</a>
+        <a href="index.html">Ana Sayfa</a> · 
+        <a href="etkinlikler.html">Etkinlikler</a> · 
+        <a href="etkinlik-ekle.html">Ekle</a> · 
+        <a href="etkinlik-guncelle.html">Güncelle</a>
     </nav>
-
     <main>
-        <section>
-            <h1>Uygulama Hakkında</h1>
-            <p>Bu uygulama şehirdeki güncel etkinlikleri takip etmenizi ve kendi etkinliklerinizi eklemenizi sağlar.</p>
-        </section>
+        <p>Fakültedeki etkinlikleri tek yerden takip edin.</p>
+        <p><strong>Yaklaşan 2 etkinlik</strong></p>
 
-        <section>
-            <h2>Yaklaşan Etkinlik 1</h2>
-            <p>Yaz Yazılım Kampı bu hafta sonu başlıyor.</p>
-            <a href="etkinlik-detay.html">Detayları Gör</a>
-        </section>
+        <div class="etkinlik-grid">
+            <div class="etkinlik-kart">
+                <h3>Kariyer Günleri</h3>
+                <p>12 Ekim</p>
+            </div>
+            <div class="etkinlik-kart">
+                <h3>Robotik Atölyesi</h3>
+                <p>20 Ekim</p>
+            </div>
+        </div>
 
-        <section>
-            <h2>Yaklaşan Etkinlik 2</h2>
-            <p>Tasarım Atölyesi katılımcılarını bekliyor.</p>
-            <a href="etkinlik-detay.html">Detayları Gör</a>
-        </section>
+        <p><a href="etkinlikler.html" class="detay-link">Tümünü gör &rarr;</a></p>
     </main>
-
-    <footer>
-        <p>&copy; 2026 Etkinlik Portalı</p>
-    </footer>
 </body>
 </html>

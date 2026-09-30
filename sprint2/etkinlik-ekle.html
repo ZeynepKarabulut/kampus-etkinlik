@@ -4,63 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etkinlik Ekle</title>
-    <link rel="stylesheet"href="numaran.css"
+    <link rel="stylesheet" href="numaran.css">
 </head>
 <body>
     <header>
-        <h1>Etkinlik Portalı</h1>
+        <h1>Etkinlik Ekle</h1>
     </header>
-
     <nav>
-        <a href="index.html">Ana Sayfa</a> |
-        <a href="etkinlikler.html">Etkinlikler</a> |
-        <a href="etkinlik-ekle.html">Etkinlik Ekle</a>
+        <a href="index.html">Ana Sayfa</a> · 
+        <a href="etkinlikler.html">Etkinlikler</a> · 
+        <a href="etkinlik-ekle.html">Ekle</a> · 
+        <a href="etkinlik-guncelle.html">Güncelle</a>
     </nav>
-
     <main>
-        <h1>Yeni Etkinlik Ekle</h1>
-
-        <form action="#" method="post">
+        <form>
             <p>
-                <label for="ad">Etkinlik Adı:</label><br>
+                <label for="ad">Etkinlik adı</label>
                 <input type="text" id="ad" name="ad" required>
             </p>
-
             <p>
-                <label for="kategori">Kategori:</label><br>
+                <label for="kategori">Kategori</label>
                 <select id="kategori" name="kategori" required>
-                    <option value="teknoloji">Teknoloji</option>
-                    <option value="sanat">Sanat</option>
-                    <option value="spor">Spor</option>
+                    <option value="">Seçiniz</option>
+                    <option value="seminer">Seminer</option>
+                    <option value="atolye">Atölye</option>
+                    <option value="soylesi">Söyleşi</option>
                 </select>
             </p>
-
             <p>
-                <label for="tarih">Tarih:</label><br>
-                <input type="date" id="tarih" name="tarih" required>
+                <label for="tarih">Tarih</label>
+                <input type="text" id="tarih" name="tarih" placeholder="boş bırakıldı" required>
             </p>
-
             <p>
-                <label for="saat">Saat:</label><br>
-                <input type="time" id="saat" name="saat" required>
+                <label for="aciklama">Açıklama</label>
+                <textarea id="aciklama" name="aciklama" rows="3"></textarea>
             </p>
-
-            <p>
-                <label for="yer">Yer:</label><br>
-                <input type="text" id="yer" name="yer" required>
-            </p>
-
-            <p>
-                <label for="aciklama">Açıklama:</label><br>
-                <textarea id="aciklama" name="aciklama" rows="4" cols="50" required></textarea>
-            </p>
-
-            <button type="submit">Gönder</button>
+            <button type="submit">Kaydet</button>
         </form>
     </main>
-
-    <footer>
-        <p>&copy; 2026 Etkinlik Portalı</p>
-    </footer>
 </body>
 </html>

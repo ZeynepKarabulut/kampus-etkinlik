@@ -1,12 +1,13 @@
 /* Zeynep Karabulut - 2516501027 */
 :root {
     --no: 2516501027;
-    --ton: 227; /* 2516501027 % 360 = 227 */
+    --ton: 227; /* 2516501027 % 360 = 227 (Koyu Mavi / Lacivert) */
     --renk-ana: hsl(var(--ton), 65%, 38%);
-    --renk-zemin: hsl(var(--ton), 30%, 97%);
-    --renk-kart: #ffffff;
-    --renk-yazi: #1f3721;
-    --renk-yazi-acik: #4b5563;
+    --renk-zemin: #f3f4f6;
+    --renk-kart: #eef2f6;
+    --renk-kart-ic: #ffffff;
+    --renk-yazi: #1e293b;
+    --renk-yazi-acik: #475569;
     --renk-hata: #dc2626;
     --font: "Palatino", "Palatino Linotype", serif;
     --kose: 8px;
@@ -23,165 +24,114 @@
 
 body {
     font-family: var(--font);
-    background-color: var(--renk-zemin);
+    background-color: #ffffff;
     color: var(--renk-yazi);
-    line-height: 1.6;
+    line-height: 1.5;
     padding: var(--bosluk-m);
-    max-width: 1000px;
+    max-width: 500px; /* Telefon görünümü için hizalama */
     margin: 0 auto;
 }
 
+/* --- HEADER / BAŞLIK (KOYU MAVİ ZEMİN) --- */
 header {
     background-color: var(--renk-ana);
     color: #ffffff;
     padding: var(--bosluk-m);
-    border-radius: var(--kose);
-    margin-bottom: var(--bosluk-m);
+    border-top-left-radius: var(--kose);
+    border-top-right-radius: var(--kose);
 }
 
 header h1 {
-    font-size: 1.8rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: var(--bosluk-s);
 }
 
+/* --- NAV / MENÜ (MAVİ ZEMİN ÜSTÜ BEYAZ YAZILI) --- */
 nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--bosluk-s);
-    background-color: var(--renk-kart);
-    padding: var(--bosluk-m);
-    border-radius: var(--kose);
-    margin-bottom: var(--bosluk-l);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    background-color: var(--renk-ana);
+    padding: 0 var(--bosluk-m) var(--bosluk-m) var(--bosluk-m);
+    border-bottom-left-radius: var(--kose);
+    border-bottom-right-radius: var(--kose);
+    margin-bottom: var(--bosluk-m);
+    font-size: 0.9rem;
 }
 
 nav a {
-    color: var(--renk-ana);
+    color: #ffffff;
     text-decoration: none;
-    font-weight: bold;
-    padding: var(--bosluk-s) var(--bosluk-m);
-    border-radius: 4px;
-    display: inline-block;
-    min-height: 44px;
-    line-height: 28px;
+    font-weight: 500;
 }
 
 nav a:hover {
-    background-color: var(--renk-zemin);
+    text-decoration: underline;
 }
 
+/* --- MAIN VE İÇERİK ALANI --- */
 main {
-    background-color: var(--renk-kart);
-    padding: var(--bosluk-l);
-    border-radius: var(--kose);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: var(--bosluk-m);
 }
 
 main h1, main h2 {
-    color: var(--renk-ana);
-    margin-bottom: var(--bosluk-m);
+    font-size: 1.2rem;
+    color: var(--renk-yazi);
+    margin-bottom: var(--bosluk-s);
 }
 
-/* --- KART DÜZENİ VE KUTUCUK TASARIMI --- */
+p {
+    color: var(--renk-yazi-acik);
+    font-size: 0.95rem;
+}
+
+/* --- KART KUTUCUKLARI (ETKİNLİKLER) --- */
 .etkinlik-grid {
-    display: grid;
-    grid-template-columns: 1fr; /* Mobil: Tek sütun */
-    gap: var(--bosluk-m);
-    margin-top: var(--bosluk-m);
-    margin-bottom: var(--bosluk-m);
-}
-
-@media (min-width: 600px) {
-    .etkinlik-grid.ikili {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (min-width: 768px) {
-    .etkinlik-grid {
-        grid-template-columns: repeat(3, 1fr); /* Masaüstü: 3 sütun */
-    }
-}
-
-.etkinlik-kart, article {
-    background-color: #ffffff;
-    border: 1px solid #e5e7eb;
-    border-radius: var(--kose);
-    padding: var(--bosluk-m);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: var(--bosluk-m);
 }
 
-.etkinlik-kart:hover, article:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    border-color: var(--renk-ana);
+.etkinlik-kart, article.kart {
+    background-color: var(--renk-kart);
+    border: 1px solid #cbd5e1;
+    border-radius: var(--kose);
+    padding: var(--bosluk-m);
 }
 
-.etkinlik-kart h3 {
-    color: var(--renk-ana);
-    margin-bottom: var(--bosluk-s);
+.etkinlik-kart h3, .etkinlik-kart h2 {
+    font-size: 1.05rem;
+    color: var(--renk-yazi);
+    margin-bottom: 2px;
 }
 
 .etkinlik-kart p {
+    font-size: 0.9rem;
     color: var(--renk-yazi-acik);
-    font-size: 0.95rem;
-    margin-bottom: var(--bosluk-s);
 }
 
-.etkinlik-kart .kategori {
-    display: inline-block;
-    background-color: var(--renk-ana);
-    color: #ffffff;
-    font-size: 0.8rem;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: var(--bosluk-s);
-    width: fit-content;
-}
-
-/* --- ŞIK DETAY LINKI (ALTI ÇİZGİSİZ, OK SİMGELİ) --- */
-.etkinlik-kart a.detay-link, main a.detay-link, .etkinlik-kart a {
+/* --- LİNK VE DETAY STİLLERİ --- */
+a.detay-link, main a {
     color: var(--renk-ana);
     font-weight: bold;
     text-decoration: none !important;
+    display: inline-block;
     margin-top: var(--bosluk-s);
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    transition: transform 0.2s ease;
 }
 
-.etkinlik-kart a.detay-link:hover, main a.detay-link:hover, .etkinlik-kart a:hover {
-    text-decoration: none !important;
-    transform: translateX(4px);
+a.detay-link:hover, main a:hover {
+    text-decoration: underline !important;
 }
 
-/* --- DETAY SAYFASI VE FOTOĞRAF KÜNYESİ --- */
-.detay-container {
-    display: flex;
-    flex-direction: column;
-    gap: var(--bosluk-l);
-}
-
-@media (min-width: 768px) {
-    .detay-container {
-        flex-direction: row;
-        align-items: flex-start;
-    }
-    .detay-gorsel {
-        flex: 1;
-        max-width: 350px;
-    }
-    .detay-bilgi {
-        flex: 2;
-    }
-}
-
+/* --- DETAY SAYFASI AFİŞ VE KÜNYE --- */
 .detay-gorsel figure {
-    margin: 0;
+    background-color: var(--renk-kart);
+    border: 1px solid #cbd5e1;
+    border-radius: var(--kose);
+    padding: 1.5rem 1rem;
+    text-align: center;
+    color: #64748b;
+    margin-bottom: var(--bosluk-m);
 }
 
 .detay-gorsel img {
@@ -201,28 +151,30 @@ main h1, main h2 {
 dl.kunye {
     display: grid;
     grid-template-columns: auto 1fr;
-    gap: var(--bosluk-s) var(--bosluk-m);
+    gap: 4px var(--bosluk-m);
     margin-bottom: var(--bosluk-m);
 }
 
 dl.kunye dt {
     font-weight: bold;
-    color: var(--renk-ana);
+    color: var(--renk-yazi);
 }
 
 dl.kunye dd {
     margin: 0;
+    color: var(--renk-yazi-acik);
 }
 
-/* --- FORM ELEMANLARI VE DOĞRULAMA --- */
-form p {
-    margin-bottom: var(--bosluk-m);
+/* --- FORM ELEMANLARI (KAYDET / GÜNCELLE BUTONLARI) --- */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--bosluk-s);
 }
 
 label {
     display: block;
-    font-weight: bold;
-    margin-bottom: var(--bosluk-s);
+    font-size: 0.9rem;
     color: var(--renk-yazi);
 }
 
@@ -233,15 +185,17 @@ select,
 textarea {
     width: 100%;
     padding: var(--bosluk-s);
-    border: 1px solid #ccc;
-    border-radius: var(--kose);
+    border: 1px solid #cbd5e1;
+    background-color: #f8fafc;
+    border-radius: 4px;
     font-family: inherit;
-    font-size: 1rem;
+    font-size: 0.95rem;
 }
 
 input:focus, select:focus, textarea:focus {
     outline: none;
     border-color: var(--renk-ana);
+    background-color: #ffffff;
 }
 
 input:invalid, select:invalid, textarea:invalid {
@@ -252,22 +206,24 @@ button[type="submit"] {
     background-color: var(--renk-ana);
     color: #ffffff;
     border: none;
-    padding: var(--bosluk-s) var(--bosluk-l);
+    padding: var(--bosluk-s) var(--bosluk-m);
     font-size: 1rem;
     font-weight: bold;
     font-family: inherit;
     border-radius: var(--kose);
     cursor: pointer;
     min-height: 44px;
+    margin-top: var(--bosluk-s);
+    width: 100%;
 }
 
 button[type="submit"]:hover {
-    opacity: 0.9;
+    opacity: 0.92;
 }
 
 footer {
     text-align: center;
     margin-top: var(--bosluk-l);
     color: var(--renk-yazi-acik);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
 }
