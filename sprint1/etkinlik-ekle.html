@@ -2,6 +2,7 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etkinlik Ekle</title>
     <link rel="stylesheet"href="../sprint2/numaran.css"
 </head>
@@ -22,12 +23,12 @@
         <form action="#" method="post">
             <p>
                 <label for="ad">Etkinlik Adı:</label><br>
-                <input type="text" id="ad" name="ad">
+                <input type="text" id="ad" name="ad" required>
             </p>
 
             <p>
                 <label for="kategori">Kategori:</label><br>
-                <select id="kategori" name="kategori">
+                <select id="kategori" name="kategori" required>
                     <option value="teknoloji">Teknoloji</option>
                     <option value="sanat">Sanat</option>
                     <option value="spor">Spor</option>
@@ -36,17 +37,17 @@
 
             <p>
                 <label for="tarih">Tarih:</label><br>
-                <input type="date" id="tarih" name="tarih">
+                <input type="date" id="tarih" name="tarih" required>
             </p>
 
             <p>
                 <label for="saat">Saat:</label><br>
-                <input type="time" id="saat" name="saat">
+                <input type="time" id="saat" name="saat" required>
             </p>
 
             <p>
                 <label for="yer">Yer:</label><br>
-                <input type="text" id="yer" name="yer">
+                <input type="text" id="yer" name="yer" required>
             </p>
 
             <p>
