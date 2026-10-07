@@ -41,7 +41,7 @@ function render(dizi) {
 
 if (list) {
   if (list.dataset.limit) {
-    // Ana Sayfa: Tarihe göre sırala ve ilk N tanesini al
+    // Ana Sayfa: Tarihe göre sırala ve ilk 2 tanesini al
     const yaklasan = [...events]
       .sort((a, b) => new Date(a.date) - new Date(b.date))
       .slice(0, Number(list.dataset.limit));
