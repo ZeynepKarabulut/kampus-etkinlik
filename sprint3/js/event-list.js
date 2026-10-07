@@ -5,7 +5,7 @@ const aramaInput = document.querySelector("#arama");
 const kategoriSelect = document.querySelector("#kategori-filtre");
 const sonucSatiri = document.querySelector("#sonuc");
 
-// Kart Şablonu Üretici (Tam Görseldeki Düzende)
+// Kart Şablonu Üretici (CSS sınıflarınızla tam uyumlu)
 function createCard(event) {
   const tarihFormatted = new Date(event.date).toLocaleDateString("tr-TR", {
     day: "numeric",
@@ -14,7 +14,7 @@ function createCard(event) {
   });
 
   return `
-    <article class="kart">
+    <article class="etkinlik-kart">
       <h3>${event.title}</h3>
       <p class="kategori-etiket">${event.category}</p>
       <p><strong>Tarih:</strong> ${tarihFormatted}, ${event.time}</p>
@@ -39,7 +39,7 @@ function render(dizi) {
   }
 }
 
-// Sayfa Yükleme Mantığı
+// Sayfa Yükleme Mantığı (Ana Sayfa vs Liste Sayfası Ayrımı)
 if (list) {
   if (list.dataset.limit) {
     // Ana Sayfa: Tarihe göre sırala ve ilk 2 tanesini al
@@ -48,7 +48,7 @@ if (list) {
       .slice(0, Number(list.dataset.limit));
     render(yaklasan);
   } else {
-    // Liste Sayfası
+    // Liste Sayfası: Hepsini Göster + Filtreleri Çalıştır
     render(events);
     setupFilters();
   }
@@ -57,7 +57,7 @@ if (list) {
 function setupFilters() {
   if (!kategoriSelect || !aramaInput) return;
 
-  // Kategori Seçeneklerini Doldur
+  // Kategori Seçeneklerini Veriden Dinamik Üret
   const kategoriler = [...new Set(events.map((e) => e.category))];
   kategoriler.forEach((kat) => {
     const option = document.createElement("option");

@@ -3,10 +3,10 @@
     --no: 2516501027;
     --ton: 227; /* 2516501027 % 360 = 227 (Koyu Mavi / Lacivert) */
     --renk-ana: hsl(var(--ton), 65%, 38%);
-    --renk-zemin: #f3f4f6;
-    --renk-kart: #eef2f6;
+    --renk-zemin: #f8fafc;
+    --renk-kart: #f1f5f9;
     --renk-kart-ic: #ffffff;
-    --renk-yazi: #1e293b;
+    --renk-yazi: #0f172a;
     --renk-yazi-acik: #475569;
     --renk-hata: #dc2626;
     --font: "Palatino", "Palatino Linotype", serif;
@@ -28,7 +28,7 @@ body {
     color: var(--renk-yazi);
     line-height: 1.5;
     padding: var(--bosluk-m);
-    max-width: 500px; /* Telefon görünümü için hizalama */
+    max-width: 500px; /* Telefon varsayılan genişliği */
     margin: 0 auto;
 }
 
@@ -42,19 +42,19 @@ header {
 }
 
 header h1 {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     font-weight: bold;
     margin-bottom: var(--bosluk-s);
 }
 
-/* --- NAV / MENÜ (MAVİ ZEMİN ÜSTÜ BEYAZ YAZILI) --- */
+/* --- NAV / MENÜ --- */
 nav {
     background-color: var(--renk-ana);
     padding: 0 var(--bosluk-m) var(--bosluk-m) var(--bosluk-m);
     border-bottom-left-radius: var(--kose);
     border-bottom-right-radius: var(--kose);
     margin-bottom: var(--bosluk-m);
-    font-size: 0.9rem;
+    font-size: 0.95rem;
 }
 
 nav a {
@@ -75,7 +75,7 @@ main {
 }
 
 main h1, main h2 {
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     color: var(--renk-yazi);
     margin-bottom: var(--bosluk-s);
 }
@@ -85,33 +85,44 @@ p {
     font-size: 0.95rem;
 }
 
-/* --- KART KUTUCUKLARI (ETKİNLİKLER) --- */
-.etkinlik-grid {
+/* --- KART DÜZENİ VE KART KUTUCUKLARI --- */
+.etkinlik-grid, #etkinlik-listesi {
     display: flex;
     flex-direction: column;
     gap: var(--bosluk-m);
 }
 
-.etkinlik-kart, article.kart {
+article.kart, .etkinlik-kart {
     background-color: var(--renk-kart);
     border: 1px solid #cbd5e1;
+    border-top: 4px solid var(--renk-ana); /* Yeşil/Mavi Renkli Üst Şerit */
     border-radius: var(--kose);
     padding: var(--bosluk-m);
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
 }
 
-.etkinlik-kart h3, .etkinlik-kart h2 {
-    font-size: 1.05rem;
+article.kart h2, article.kart h3, .etkinlik-kart h3 {
+    font-size: 1.1rem;
     color: var(--renk-yazi);
     margin-bottom: 2px;
 }
 
-.etkinlik-kart p {
-    font-size: 0.9rem;
+article.kart p.kategori-etiket {
+    font-style: italic;
     color: var(--renk-yazi-acik);
+    font-weight: 600;
+    margin-bottom: 0.25rem;
 }
 
-/* --- LİNK VE DETAY STİLLERİ --- */
-a.detay-link, main a {
+article.kart p.aciklama {
+    margin-top: 0.4rem;
+    font-size: 0.9rem;
+}
+
+/* --- LİNK VE BUTON STİLLERİ --- */
+a.detay-link {
     color: var(--renk-ana);
     font-weight: bold;
     text-decoration: none !important;
@@ -119,53 +130,50 @@ a.detay-link, main a {
     margin-top: var(--bosluk-s);
 }
 
-a.detay-link:hover, main a:hover {
+a.detay-link:hover {
     text-decoration: underline !important;
 }
 
-/* --- DETAY SAYFASI AFİŞ VE KÜNYE --- */
-.detay-gorsel figure {
+.btn {
+    display: inline-block;
+    background-color: var(--renk-ana);
+    color: #ffffff !important;
+    padding: 0.6rem 1.2rem;
+    border-radius: var(--kose);
+    text-decoration: none !important;
+    font-weight: bold;
+    font-size: 0.95rem;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn:hover {
+    opacity: 0.92;
+}
+
+.btn-secondary {
+    background-color: #475569;
+}
+
+/* --- FİLTRE FORMU (Etkinlikler Sayfası) --- */
+form.filtre {
     background-color: var(--renk-kart);
     border: 1px solid #cbd5e1;
     border-radius: var(--kose);
-    padding: 1.5rem 1rem;
-    text-align: center;
-    color: #64748b;
-    margin-bottom: var(--bosluk-m);
+    padding: var(--bosluk-m);
+    display: flex;
+    flex-direction: column;
+    gap: var(--bosluk-s);
 }
 
-.detay-gorsel img {
-    width: 100%;
-    height: auto;
-    border-radius: var(--kose);
-    display: block;
-}
-
-.detay-gorsel figcaption {
-    font-size: 0.85rem;
-    color: var(--renk-yazi-acik);
-    margin-top: var(--bosluk-s);
-    font-style: italic;
-}
-
-dl.kunye {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 4px var(--bosluk-m);
-    margin-bottom: var(--bosluk-m);
-}
-
-dl.kunye dt {
+p#sonuc {
+    font-size: 0.9rem;
     font-weight: bold;
-    color: var(--renk-yazi);
-}
-
-dl.kunye dd {
-    margin: 0;
     color: var(--renk-yazi-acik);
 }
 
-/* --- FORM ELEMANLARI (KAYDET / GÜNCELLE BUTONLARI) --- */
+/* --- FORM ELEMANLARI --- */
 form {
     display: flex;
     flex-direction: column;
@@ -175,18 +183,21 @@ form {
 label {
     display: block;
     font-size: 0.9rem;
+    font-weight: bold;
     color: var(--renk-yazi);
 }
 
 input[type="text"],
 input[type="date"],
 input[type="time"],
+input[type="number"],
+input[type="search"],
 select,
 textarea {
     width: 100%;
     padding: var(--bosluk-s);
     border: 1px solid #cbd5e1;
-    background-color: #f8fafc;
+    background-color: #ffffff;
     border-radius: 4px;
     font-family: inherit;
     font-size: 0.95rem;
@@ -195,115 +206,23 @@ textarea {
 input:focus, select:focus, textarea:focus {
     outline: none;
     border-color: var(--renk-ana);
-    background-color: #ffffff;
 }
 
-input:invalid, select:invalid, textarea:invalid {
-    border-color: var(--renk-hata);
-}
-
-button[type="submit"] {
-    background-color: var(--renk-ana);
-    color: #ffffff;
-    border: none;
-    padding: var(--bosluk-s) var(--bosluk-m);
-    font-size: 1rem;
-    font-weight: bold;
-    font-family: inherit;
-    border-radius: var(--kose);
-    cursor: pointer;
-    min-height: 44px;
-    margin-top: var(--bosluk-s);
-    width: 100%;
-}
-
-button[type="submit"]:hover {
-    opacity: 0.92;
-}
-
-footer {
-    text-align: center;
-    margin-top: var(--bosluk-l);
-    color: var(--renk-yazi-acik);
-    font-size: 0.85rem;
-}
-/* Tıklanabilir Kart Link Stilleri */
-a.kart-link {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-}
-
-.etkinlik-kart {
-    cursor: pointer;
-    transition: background-color 0.2s ease, transform 0.1s ease;
-}
-
-.etkinlik-kart:hover,
-.etkinlik-kart:active {
-    background-color: #e2e8f0; /* Üzerine gelindiğinde veya dokunulduğunda hafif koyulaşma */
-}
-/* --- 1. MASAÜSTÜ (GENİŞ EKRAN) DÜZENİ --- */
-@media (min-width: 768px) {
-    body {
-        max-width: 1000px; /* Geniş ekranda siteyi genişletir */
-    }
-
-    /* Kartları Yan Yana 2 Sütun Yapar */
-    .etkinlik-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: var(--bosluk-m);
-    }
-
-    /* Detay Sayfası: Solda Açıklama/Görsel, Sağda Künye Kutusu */
-    .detay-duzen {
-        display: grid;
-        grid-template-columns: 2fr 1fr;
-        gap: var(--bosluk-l);
-        align-items: start;
-    }
-
-    /* Filtre Formunu Yan Yana Getirir */
-    form.filtre {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-end;
-        gap: var(--bosluk-m);
-    }
-
-    form.filtre > div {
-        flex: 1;
-    }
-}
-form.filtre {
-    background-color: var(--renk-kart);
-    border: 1px solid #cbd5e1;
-    border-radius: var(--kose);
-    padding: var(--bosluk-m);
-    margin-bottom: var(--bosluk-s);
-}
-p#sonuc {
-    font-size: 0.9rem;
-    font-weight: bold;
-    color: var(--renk-yazi-acik);
-    margin-bottom: var(--bosluk-s);
-}
+/* --- HATA VE BAŞARI STİLLERİ --- */
 input[aria-invalid="true"],
 select[aria-invalid="true"],
 textarea[aria-invalid="true"] {
     border: 2px solid var(--renk-hata) !important;
     background-color: #fef2f2 !important;
 }
-/* Input altlarındaki kırmızı hata metinleri */
+
 .hata-mesaj {
     color: var(--renk-hata);
     font-size: 0.8rem;
-    margin-top: 2px;
     display: block;
-    min-height: 1.1rem; /* Metin yokken düzen kaymasın */
+    min-height: 1.1rem;
 }
-/* Form Altındaki Kırmızı Hata / Yeşil Başarı Kutuları */
+
 .hata-kutusu {
     border: 1px solid var(--renk-hata);
     background-color: #fef2f2;
@@ -322,7 +241,6 @@ textarea[aria-invalid="true"] {
     margin-top: var(--bosluk-m);
 }
 
-/* Başarı kutusu içindeki JSON görüntüsü (JSON.stringify çıktısı) */
 .basari-kutusu pre {
     background-color: #ffffff;
     border: 1px solid #bbf7d0;
@@ -335,7 +253,7 @@ textarea[aria-invalid="true"] {
     word-break: break-all;
 }
 
-/* --- 4. DETAY SAYFASI VE KÜNYE KUTUSU (Adım 8) --- */
+/* --- DETAY SAYFASI DÜZENİ --- */
 .kunye-kutusu {
     background-color: var(--renk-kart);
     border: 1px solid #cbd5e1;
@@ -351,29 +269,44 @@ textarea[aria-invalid="true"] {
     padding-bottom: 4px;
 }
 
-/* Buton Düzenlemeleri (Listeye Dön / Güncelle Butonları) */
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--renk-ana);
-    color: #ffffff !important;
-    padding: var(--bosluk-s) var(--bosluk-m);
-    border-radius: var(--kose);
-    text-decoration: none !important;
-    font-weight: bold;
-    font-size: 0.9rem;
-    border: none;
-    cursor: pointer;
-    margin-top: var(--bosluk-s);
+footer {
+    text-align: center;
+    margin-top: var(--bosluk-l);
+    color: var(--renk-yazi-acik);
+    font-size: 0.85rem;
 }
 
-.btn-secondary {
-    background-color: #475569; /* Güncelle butonu için gri ton */
-}
+/* ==========================================================================
+   MASAÜSTÜ (GENİŞ EKRAN / GRID) DÜZENİ
+   ========================================================================== */
+@media (min-width: 768px) {
+    body {
+        max-width: 1000px; /* Bilgisayar ekranında genişletir */
+    }
 
-.buton-grubu {
-    display: flex;
-    gap: var(--bosluk-s);
-    flex-wrap: wrap;
+    /* Kartları Yan Yana 2 Sütun Yapar */
+    .etkinlik-grid, #etkinlik-listesi {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--bosluk-m);
+    }
+
+    /* Detay Sayfası: Solda İçerik, Sağda Künye Kutusu */
+    .detay-duzen {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: var(--bosluk-l);
+        align-items: start;
+    }
+
+    /* Filtre Formunu Yan Yana Getirir */
+    form.filtre {
+        flex-direction: row;
+        align-items: flex-end;
+        gap: var(--bosluk-m);
+    }
+
+    form.filtre > div {
+        flex: 1;
+    }
 }
