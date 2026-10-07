@@ -5,7 +5,7 @@ const aramaInput = document.querySelector("#arama");
 const kategoriSelect = document.querySelector("#kategori-filtre");
 const sonucSatiri = document.querySelector("#sonuc");
 
-// Kart Şablonu Üretici
+// Kart Şablonu Üretici (Tam Görseldeki Düzende)
 function createCard(event) {
   const tarihFormatted = new Date(event.date).toLocaleDateString("tr-TR", {
     day: "numeric",
@@ -15,12 +15,12 @@ function createCard(event) {
 
   return `
     <article class="kart">
-      <h2>${event.title}</h2>
+      <h3>${event.title}</h3>
       <p class="kategori-etiket">${event.category}</p>
       <p><strong>Tarih:</strong> ${tarihFormatted}, ${event.time}</p>
       <p><strong>Yer:</strong> ${event.location}</p>
       <p><strong>Kontenjan:</strong> ${event.capacity} kişi</p>
-      <p>${event.description}</p>
+      <p class="aciklama">${event.description}</p>
       <a href="etkinlik-detay.html?id=${event.id}" class="detay-link">Detayları gör</a>
     </article>
   `;
@@ -39,6 +39,7 @@ function render(dizi) {
   }
 }
 
+// Sayfa Yükleme Mantığı
 if (list) {
   if (list.dataset.limit) {
     // Ana Sayfa: Tarihe göre sırala ve ilk 2 tanesini al
@@ -47,7 +48,7 @@ if (list) {
       .slice(0, Number(list.dataset.limit));
     render(yaklasan);
   } else {
-    // Liste Sayfası: Hepsini Göster + Filtreleri Hazırla
+    // Liste Sayfası
     render(events);
     setupFilters();
   }
@@ -56,7 +57,7 @@ if (list) {
 function setupFilters() {
   if (!kategoriSelect || !aramaInput) return;
 
-  // Dinamik Kategori Seçeneklerini Doldur (Set ile benzersiz yap)
+  // Kategori Seçeneklerini Doldur
   const kategoriler = [...new Set(events.map((e) => e.category))];
   kategoriler.forEach((kat) => {
     const option = document.createElement("option");
