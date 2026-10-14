@@ -1,0 +1,312 @@
+/* Zeynep Karabulut - 2516501027 */
+:root {
+    --no: 2516501027;
+    --ton: 227; /* 2516501027 % 360 = 227 (Koyu Mavi / Lacivert) */
+    --renk-ana: hsl(var(--ton), 65%, 38%);
+    --renk-zemin: #f8fafc;
+    --renk-kart: #f1f5f9;
+    --renk-kart-ic: #ffffff;
+    --renk-yazi: #0f172a;
+    --renk-yazi-acik: #475569;
+    --renk-hata: #dc2626;
+    --font: "Palatino", "Palatino Linotype", serif;
+    --kose: 8px;
+    --bosluk-m: 1rem;
+    --bosluk-s: 0.5rem;
+    --bosluk-l: 1.5rem;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font);
+    background-color: #ffffff;
+    color: var(--renk-yazi);
+    line-height: 1.5;
+    padding: var(--bosluk-m);
+    max-width: 500px; /* Telefon varsayılan genişliği */
+    margin: 0 auto;
+}
+
+/* --- HEADER / BAŞLIK (KOYU MAVİ ZEMİN) --- */
+header {
+    background-color: var(--renk-ana);
+    color: #ffffff;
+    padding: var(--bosluk-m);
+    border-top-left-radius: var(--kose);
+    border-top-right-radius: var(--kose);
+}
+
+header h1 {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: var(--bosluk-s);
+}
+
+/* --- NAV / MENÜ --- */
+nav {
+    background-color: var(--renk-ana);
+    padding: 0 var(--bosluk-m) var(--bosluk-m) var(--bosluk-m);
+    border-bottom-left-radius: var(--kose);
+    border-bottom-right-radius: var(--kose);
+    margin-bottom: var(--bosluk-m);
+    font-size: 0.95rem;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* --- MAIN VE İÇERİK ALANI --- */
+main {
+    display: flex;
+    flex-direction: column;
+    gap: var(--bosluk-m);
+}
+
+main h1, main h2 {
+    font-size: 1.25rem;
+    color: var(--renk-yazi);
+    margin-bottom: var(--bosluk-s);
+}
+
+p {
+    color: var(--renk-yazi-acik);
+    font-size: 0.95rem;
+}
+
+/* --- KART DÜZENİ VE KART KUTUCUKLARI --- */
+.etkinlik-grid, #etkinlik-listesi {
+    display: flex;
+    flex-direction: column;
+    gap: var(--bosluk-m);
+}
+
+article.kart, .etkinlik-kart {
+    background-color: var(--renk-kart);
+    border: 1px solid #cbd5e1;
+    border-top: 4px solid var(--renk-ana); /* Yeşil/Mavi Renkli Üst Şerit */
+    border-radius: var(--kose);
+    padding: var(--bosluk-m);
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+article.kart h2, article.kart h3, .etkinlik-kart h3 {
+    font-size: 1.1rem;
+    color: var(--renk-yazi);
+    margin-bottom: 2px;
+}
+
+article.kart p.kategori-etiket {
+    font-style: italic;
+    color: var(--renk-yazi-acik);
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+article.kart p.aciklama {
+    margin-top: 0.4rem;
+    font-size: 0.9rem;
+}
+
+/* --- LİNK VE BUTON STİLLERİ --- */
+a.detay-link {
+    color: var(--renk-ana);
+    font-weight: bold;
+    text-decoration: none !important;
+    display: inline-block;
+    margin-top: var(--bosluk-s);
+}
+
+a.detay-link:hover {
+    text-decoration: underline !important;
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--renk-ana);
+    color: #ffffff !important;
+    padding: 0.6rem 1.2rem;
+    border-radius: var(--kose);
+    text-decoration: none !important;
+    font-weight: bold;
+    font-size: 0.95rem;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn:hover {
+    opacity: 0.92;
+}
+
+.btn-secondary {
+    background-color: #475569;
+}
+
+/* --- FİLTRE FORMU (Etkinlikler Sayfası) --- */
+form.filtre {
+    background-color: var(--renk-kart);
+    border: 1px solid #cbd5e1;
+    border-radius: var(--kose);
+    padding: var(--bosluk-m);
+    display: flex;
+    flex-direction: column;
+    gap: var(--bosluk-s);
+}
+
+p#sonuc {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: var(--renk-yazi-acik);
+}
+
+/* --- FORM ELEMANLARI --- */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--bosluk-s);
+}
+
+label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: var(--renk-yazi);
+}
+
+input[type="text"],
+input[type="date"],
+input[type="time"],
+input[type="number"],
+input[type="search"],
+select,
+textarea {
+    width: 100%;
+    padding: var(--bosluk-s);
+    border: 1px solid #cbd5e1;
+    background-color: #ffffff;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 0.95rem;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--renk-ana);
+}
+
+/* --- HATA VE BAŞARI STİLLERİ --- */
+input[aria-invalid="true"],
+select[aria-invalid="true"],
+textarea[aria-invalid="true"] {
+    border: 2px solid var(--renk-hata) !important;
+    background-color: #fef2f2 !important;
+}
+
+.hata-mesaj {
+    color: var(--renk-hata);
+    font-size: 0.8rem;
+    display: block;
+    min-height: 1.1rem;
+}
+
+.hata-kutusu {
+    border: 1px solid var(--renk-hata);
+    background-color: #fef2f2;
+    color: #991b1b;
+    padding: var(--bosluk-m);
+    border-radius: var(--kose);
+    margin-top: var(--bosluk-m);
+}
+
+.basari-kutusu {
+    border: 1px solid #16a34a;
+    background-color: #f0fdf4;
+    color: #166534;
+    padding: var(--bosluk-m);
+    border-radius: var(--kose);
+    margin-top: var(--bosluk-m);
+}
+
+.basari-kutusu pre {
+    background-color: #ffffff;
+    border: 1px solid #bbf7d0;
+    padding: var(--bosluk-s);
+    border-radius: 4px;
+    margin-top: var(--bosluk-s);
+    font-family: monospace;
+    font-size: 0.85rem;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+/* --- DETAY SAYFASI DÜZENİ --- */
+.kunye-kutusu {
+    background-color: var(--renk-kart);
+    border: 1px solid #cbd5e1;
+    border-radius: var(--kose);
+    padding: var(--bosluk-m);
+}
+
+.kunye-kutusu h3 {
+    font-size: 1rem;
+    color: var(--renk-yazi);
+    margin-bottom: var(--bosluk-s);
+    border-bottom: 1px solid #cbd5e1;
+    padding-bottom: 4px;
+}
+
+footer {
+    text-align: center;
+    margin-top: var(--bosluk-l);
+    color: var(--renk-yazi-acik);
+    font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   MASAÜSTÜ (GENİŞ EKRAN / GRID) DÜZENİ
+   ========================================================================== */
+@media (min-width: 768px) {
+    body {
+        max-width: 1000px; /* Bilgisayar ekranında genişletir */
+    }
+
+    /* Kartları Yan Yana 2 Sütun Yapar */
+    .etkinlik-grid, #etkinlik-listesi {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--bosluk-m);
+    }
+
+    /* Detay Sayfası: Solda İçerik, Sağda Künye Kutusu */
+    .detay-duzen {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: var(--bosluk-l);
+        align-items: start;
+    }
+
+    /* Filtre Formunu Yan Yana Getirir */
+    form.filtre {
+        flex-direction: row;
+        align-items: flex-end;
+        gap: var(--bosluk-m);
+    }
+
+    form.filtre > div {
+        flex: 1;
+    }
+}

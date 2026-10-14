@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a8a" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Arka Plan -->
+  <rect width="800" height="500" fill="url(#bgGrad)" rx="12" />
+  
+  <!-- Şık Dekoratif Çerçeve -->
+  <rect x="30" y="30" width="740" height="440" fill="none" stroke="#3b82f6" stroke-width="2" stroke-opacity="0.4" rx="8" />
+  
+  <!-- Ortadaki Metin ve Başlık Alanı -->
+  <g transform="translate(400, 250)" text-anchor="middle">
+    <!-- Üst Küçük Kategori Bilgisi -->
+    <text x="0" y="-40" fill="#93c5fd" font-family="'Palatino', 'Palatino Linotype', serif" font-size="22" font-weight="600" letter-spacing="3">KAMPÜS ETKİNLİĞİ</text>
+    
+    <!-- Ana Etkinlik Başlığı (Büyük ve Düzgün Harflerle) -->
+    <text x="0" y="20" fill="#ffffff" font-family="'Palatino', 'Palatino Linotype', serif" font-size="42" font-weight="bold">ETKİNLİK AFİŞİ</text>
+    
+    <!-- Alt Çizgi Vurgusu -->
+    <line x1="-100" y1="60" x2="100" y2="60" stroke="#3b82f6" stroke-width="3" stroke-linecap="round" />
+    
+    <!-- Yıl / Üniversite İmzası -->
+    <text x="0" y="120" fill="#94a3b8" font-family="'Palatino', 'Palatino Linotype', serif" font-size="16" letter-spacing="2">2026</text>
+  </g>
+</svg>
