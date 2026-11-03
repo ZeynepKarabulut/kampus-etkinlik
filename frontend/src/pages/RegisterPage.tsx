@@ -99,7 +99,7 @@ export default function RegisterPage() {
         )}
 
         <div style={{ marginTop: '15px', textAlign: 'center', fontSize: '14px' }}>
-          <Link to="/login" style={{ color: '#65a30d', textDecoration: 'none' }}>Zaten hesabın var mı? Giriş yap</Link>
+          <Link to="/login" style={{ color: '#2563eb', textDecoration: 'none' }}>Zaten hesabın var mı? Giriş yap</Link>
         </div>
       </div>
     </div>

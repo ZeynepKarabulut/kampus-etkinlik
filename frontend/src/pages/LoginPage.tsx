@@ -63,8 +63,8 @@ export default function LoginPage() {
         )}
 
         <div style={{ marginTop: '15px', display: 'flex', justifyContent: 'space-between', fontSize: '14px' }}>
-          <Link to="/forgot-password" style={{ color: '#65a30d', textDecoration: 'none' }}>Şifremi unuttum</Link>
-          <Link to="/register" style={{ color: '#65a30d', textDecoration: 'none' }}>Hesabın yok mu? Kayıt ol</Link>
+          <Link to="/forgot-password" style={{ color: '#2563eb', textDecoration: 'none' }}>Şifremi unuttum</Link>
+          <Link to="/register" style={{ color: '#2563eb', textDecoration: 'none' }}>Hesabın yok mu? Kayıt ol</Link>
         </div>
       </div>
     </div>

@@ -17,9 +17,9 @@ body {
   padding: 20px;
 }
 
-/* Üst Yeşil Header Kutusu */
+/* Üst Mavi Header Kutusu */
 header {
-  background: #65a30d;
+  background: #1e40af;
   color: #fff;
   padding: 24px 28px;
   border-radius: 6px;
@@ -37,7 +37,7 @@ header h1 {
 }
 
 header p {
-  color: #ecfdf5;
+  color: #93c5fd;
   font-size: 14px;
 }
 
@@ -55,13 +55,13 @@ nav a {
   font-weight: 500;
   padding: 8px 16px;
   border-radius: 4px;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.15);
   transition: background 0.2s;
 }
 
 nav a:hover, nav a.active {
   background: #ffffff;
-  color: #3f6212;
+  color: #1e40af;
   font-weight: 600;
 }
 
@@ -87,7 +87,7 @@ p {
 
 .card, .event-card {
   background: #fff;
-  border: 1px solid #e2e8f0;
+  border: 1px solid #cbd5e1;
   border-radius: 6px;
   padding: 24px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.05);
@@ -112,7 +112,7 @@ th, td {
 }
 
 th {
-  background-color: #65a30d;
+  background-color: #1e40af;
   color: #ffffff;
   font-weight: 600;
 }
@@ -123,7 +123,7 @@ tr:hover {
 
 /* Buton Tasarımları */
 button, .btn {
-  background: #65a30d;
+  background: #2563eb;
   color: white;
   border: none;
   padding: 8px 16px;
@@ -137,17 +137,17 @@ button, .btn {
 }
 
 button:hover, .btn:hover {
-  background: #4d7c0f;
+  background: #1d4ed8;
 }
 
 td button, td .btn-edit {
-  background: #65a30d; 
+  background: #d97706; 
   margin-right: 6px;
   padding: 6px 12px;
 }
 
 td button:hover, td .btn-edit:hover {
-  background: #4d7c0f;
+  background: #b45309;
 }
 
 td button.delete-btn, td .btn-delete {
@@ -159,7 +159,7 @@ td button.delete-btn:hover, td .btn-delete:hover {
   background: #b91c1c;
 }
 
-/* Slayt 13: Masaüstünde tablo, telefonda kart görünümü */
+/* Adım 13: Masaüstünde tablo, telefonda kart görünümü */
 @media (max-width: 699px) {
   table thead {
     display: none;

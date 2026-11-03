@@ -49,7 +49,7 @@ export default function ForgotPasswordPage() {
         )}
 
         <div style={{ marginTop: '15px', textAlign: 'center', fontSize: '14px' }}>
-          <Link to="/login" style={{ color: '#65a30d', textDecoration: 'none' }}>Girişe dön</Link>
+          <Link to="/login" style={{ color: '#2563eb', textDecoration: 'none' }}>Girişe dön</Link>
         </div>
       </div>
     </div>
