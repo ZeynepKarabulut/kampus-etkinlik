@@ -10,7 +10,6 @@ interface EventDetailProps {
 export default function EventDetail({ event, onBack, onEdit }: EventDetailProps) {
   return (
     <article className="detay">
-      <h2>{event.title}</h2>
       {event.image && (
         <figure style={{ margin: "1rem 0" }}>
           <img src={event.image} alt={`${event.title} afişi`} style={{ width: "100%", borderRadius: "8px" }} />
