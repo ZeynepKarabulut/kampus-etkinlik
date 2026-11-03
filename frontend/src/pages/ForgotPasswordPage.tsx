@@ -20,15 +20,13 @@ export default function ForgotPasswordPage() {
 
   return (
     <div className="container">
-      <header>
-        <h1>Şifremi Unuttum</h1>
-        <p>Şifrenizi sıfırlamak için e-posta adresinizi girin.</p>
-      </header>
+      <h2>Şifremi Unuttum</h2>
+      <p>Kayıtlı e-posta adresinizi yazın, şifre yenileme bağlantısı gönderelim.</p>
 
-      <div className="card" style={{ maxWidth: '500px', margin: '0 auto' }}>
-        <form onSubmit={handleSubmit}>
+      <div className="card" style={{ maxWidth: '500px', margin: '20px auto' }}>
+        <form onSubmit={handleSubmit} noValidate>
           <div style={{ marginBottom: '15px' }}>
-            <label style={{ display: 'block', marginBottom: '5px', fontWeight: '500' }}>E-posta Adresi</label>
+            <label style={{ display: 'block', marginBottom: '5px', fontWeight: '500' }}>E-posta</label>
             <input 
               type="email" 
               value={email}
@@ -39,11 +37,11 @@ export default function ForgotPasswordPage() {
             {error && <p style={{ color: '#dc2626', fontSize: '13px', marginTop: '4px' }}>{error}</p>}
           </div>
 
-          <button type="submit" style={{ width: '100%', padding: '10px' }}>Şifre Sıfırlama Bağlantısı Gönder</button>
+          <button type="submit" style={{ width: '100%', padding: '10px' }}>Bağlantı gönder</button>
         </form>
 
         {sent && (
-          <p className="mesaj-basari" style={{ marginTop: '15px', padding: '10px', background: '#ecfdf5', color: '#065f46', borderRadius: '4px', fontSize: '14px' }}>
+          <p style={{ marginTop: '15px', padding: '10px', background: '#ecfdf5', color: '#065f46', borderRadius: '4px', fontSize: '14px' }}>
             {sent}
           </p>
         )}

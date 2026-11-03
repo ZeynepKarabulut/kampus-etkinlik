@@ -34,13 +34,10 @@ export default function RegisterPage() {
 
   return (
     <div className="container">
-      <header>
-        <h1>Kayıt Ol</h1>
-        <p>Yeni bir hesap oluşturarak etkinliklere katılın.</p>
-      </header>
+      <h2>Kayıt Ol</h2>
 
-      <div className="card" style={{ maxWidth: '500px', margin: '0 auto' }}>
-        <form onSubmit={handleSubmit}>
+      <div className="card" style={{ maxWidth: '500px', margin: '20px auto' }}>
+        <form onSubmit={handleSubmit} noValidate>
           <div style={{ marginBottom: '15px' }}>
             <label style={{ display: 'block', marginBottom: '5px', fontWeight: '500' }}>Ad Soyad</label>
             <input 
