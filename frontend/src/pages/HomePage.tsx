@@ -8,10 +8,7 @@ export default function HomePage() {
 
   return (
     <div className="container">
-      <div className="hero-section" style={{ marginBottom: '20px' }}>
-        <h2>Kampüs Etkinlikleri</h2>
-        <p>Fakültedeki seminer, atölye ve söyleşileri tek yerden takip edin.</p>
-      </div>
+
 
       <h3 style={{ margin: '20px 0' }}>Yaklaşan {featuredEvents.length} Etkinlik</h3>
 
