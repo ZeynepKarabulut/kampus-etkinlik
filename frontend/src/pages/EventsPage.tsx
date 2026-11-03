@@ -17,9 +17,7 @@ export default function EventsPage() {
 
   return (
     <div className="container" style={{ padding: '20px' }}>
-      <h2>Tüm Etkinlikler</h2>
-      <p style={{ color: '#666', marginBottom: '20px' }}>Ekim ayında kampüste düzenlenen etkinlikler.</p>
-
+      
       {/* Filtreleme ve Arama Alanı */}
       <div style={{ display: 'flex', gap: '20px', marginBottom: '30px', background: '#f9f9f9', padding: '15px', borderRadius: '8px', border: '1px solid #ddd' }}>
         <div style={{ flex: 1 }}>
