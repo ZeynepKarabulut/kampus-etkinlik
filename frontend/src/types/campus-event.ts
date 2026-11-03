@@ -11,3 +11,13 @@ export interface CampusEvent {
   description: string;
   image?: string;
 }
+
+export interface EventFormData {
+  title: string;
+  category: string;
+  date: string;
+  time: string;
+  location: string;
+  capacity: string;
+  description: string;
+}
