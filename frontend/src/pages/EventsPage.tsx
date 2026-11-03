@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useEvents } from '../context/EventsContext';
 import { Link } from 'react-router-dom';
-import type { Category } from '../types/campus-event';
 
 export default function EventsPage() {
   const { events } = useEvents();
