@@ -12,8 +12,6 @@ export default function AdminPage() {
 
   return (
     <div className="container">
-      <h2>Etkinlik Yönetimi</h2>
-      
       <div style={{ marginBottom: '16px' }}>
         <Link to="/admin/new" className="btn">+ Yeni etkinlik</Link>
       </div>

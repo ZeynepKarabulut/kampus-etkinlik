@@ -22,9 +22,7 @@ export default function LoginPage() {
 
   return (
     <div className="container">
-      <h2>Giriş Yap</h2>
-
-      <div className="card" style={{ maxWidth: '500px', margin: '20px auto' }}>
+      <div className="card" style={{ maxWidth: '500px', margin: '0 auto' }}>
         <form onSubmit={handleSubmit} noValidate>
           <div style={{ marginBottom: '15px' }}>
             <label style={{ display: 'block', marginBottom: '5px', fontWeight: '500' }}>E-posta</label>
