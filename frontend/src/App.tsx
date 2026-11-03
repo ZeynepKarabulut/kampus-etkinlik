@@ -4,7 +4,7 @@ import type { Category } from "./types/campus-event";
 import type { PageName } from "./types/page";
 import { searchEvents, filterByCategory, findEventById } from "./utils/filter-events";
 
-import Header from "./components/layout/Header";
+import { Header } from "./components/layout/Header";
 import Navigation from "./components/layout/Navigation";
 import Footer from "./components/layout/Footer";
 
@@ -52,7 +52,7 @@ export default function App() {
   return (
     <>
       <Header
-        title="Kampüs Etkinlikleri"
+        title={page === "detail" && selectedEvent ? selectedEvent.title : "Kampüs Etkinlikleri"} 
         text={
           page === "home"
             ? "Fakültedeki seminer, atölye ve söyleşileri tek yerden takip edin."
