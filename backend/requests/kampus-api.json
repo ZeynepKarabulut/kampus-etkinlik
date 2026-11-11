@@ -1,0 +1,60 @@
+{
+  "info": {
+    "name": "Kampüs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1 Sağlık (Health)",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:3000/health"
+      }
+    },
+    {
+      "name": "2 Tüm Etkinlikler",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:3000/events"
+      }
+    },
+    {
+      "name": "3 Tek Etkinlik",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:3000/events/event-2"
+      }
+    },
+    {
+      "name": "4 Olmayan Etkinlik (404)",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:3000/events/yok"
+      }
+    },
+    {
+      "name": "5 Yeni Etkinlik Ekle (POST)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Git Atölyesi\",\n  \"category\": \"Atölye\",\n  \"date\": \"2026-12-01\",\n  \"capacity\": 30\n}"
+        },
+        "url": "http://localhost:3000/events"
+      }
+    },
+    {
+      "name": "6 Eksik Alanla Ekle (400)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Sadece Başlık\"\n}"
+        },
+        "url": "http://localhost:3000/events"
+      }
+    }
+  ]
+}
