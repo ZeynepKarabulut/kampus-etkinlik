@@ -1,43 +1,82 @@
-import { events } from "../data/events.js";
+import Event from "../models/event-model.js";
 
-// GET /events (Kategoriye göre filtreleme destekli)
-export function getEvents(req, res) {
-  const { category } = req.query;
-  if (category) {
-    const filtered = events.filter((e) => e.category === category);
-    return res.json(filtered);
+const createResponse = function (res, status, content) {
+  res.status(status).json(content);
+};
+export const listEvents = async (req, res) => {
+    try {
+        const events = await Event.find();
+        console.log("Veritabanından gelen etkinlikler:", events); // <-- Bu satırı ekle
+        
+        if (!events || events.length === 0) {
+            return res.status(404).json({ status: "Böyle bir etkinlik yok" });
+        }
+        res.status(200).json(events);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+// Yeni etkinlik ekleme (POST)
+const addEvent = async function (req, res) {
+  try {
+    const newEvent = await Event.create(req.body);
+    createResponse(res, 201, newEvent);
+  } catch (error) {
+    createResponse(res, 400, error);
   }
-  res.json(events);
-}
+};
 
-// GET /events/:id (Tek etkinlik veya 404)
-export function getEventById(req, res) {
-  const event = events.find((e) => e.id === req.params.id);
-  if (!event) {
-    return res.status(404).json({ error: { message: "Event not found" } });
+// Belirli bir etkinliği getirme (GET /:id)
+const getEvent = async function (req, res) {
+  try {
+    const event = await Event.findById(req.params.id).exec();
+    if (!event) {
+      createResponse(res, 404, { status: "Böyle bir etkinlik yok" });
+      return;
+    }
+    createResponse(res, 200, event);
+  } catch (error) {
+    createResponse(res, 404, { status: "Böyle bir etkinlik yok" });
   }
-  res.json(event);
-}
+};
 
-// POST /events (Yeni etkinlik ekleme)
-export function createEvent(req, res) {
-  const { title, category, capacity, date, time, location, description } = req.body || {};
-
-  if (!title || !category || !date) {
-    return res.status(400).json({ error: { message: "title, category and date are required" } });
+// Belirli bir etkinliği güncelleme (PUT /:id)
+const updateEvent = async function (req, res) {
+  try {
+    const updatedEvent = await Event.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
+    if (!updatedEvent) {
+      createResponse(res, 404, { status: "Böyle bir etkinlik yok" });
+      return;
+    }
+    createResponse(res, 200, updatedEvent);
+  } catch (error) {
+    createResponse(res, 400, error);
   }
+};
 
-  const newEvent = {
-    id: `event-${Date.now()}`,
-    title,
-    category,
-    capacity: Number(capacity) || 10,
-    date,
-    time: time || "",
-    location: location || "",
-    description: description || ""
-  };
+// Belirli bir etkinliği silme (DELETE /:id)
+const deleteEvent = async function (req, res) {
+  try {
+    const deletedEvent = await Event.findByIdAndDelete(req.params.id);
+    if (!deletedEvent) {
+      createResponse(res, 404, { status: "Böyle bir etkinlik yok" });
+      return;
+    }
+    createResponse(res, 200, { status: deletedEvent.title + " isimli etkinlik silindi" });
+  } catch (error) {
+    createResponse(res, 404, { status: "Böyle bir etkinlik yok" });
+  }
+};
 
-  events.push(newEvent);
-  res.status(201).json(newEvent);
-}
+export default {
+  listEvents,
+  addEvent,
+  getEvent,
+  updateEvent,
+  deleteEvent
+};
