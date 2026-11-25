@@ -1,12 +1,20 @@
-import express from "express";
-import ctrlEvents from "../controllers/event-controller.js";
+import { Router } from "express";
+import { 
+    listEvents, 
+    getUpcomingEvents, 
+    getEvent, 
+    addEvent, 
+    updateEvent, 
+    deleteEvent 
+} from "../controllers/event-controller.js";
 
-var router = express.Router();
+const router = Router();
 
-
-router
-  .get("/events",ctrlEvents.listEvents)
-  .post("/events", ctrlEvents.addEvent)
-  .get("/events/:id", ctrlEvents.getEvent)
+router.get("/", listEvents);
+router.get("/upcoming", getUpcomingEvents); 
+router.get("/:id", getEvent);
+router.post("/", addEvent);
+router.patch("/:id", updateEvent);
+router.delete("/:id", deleteEvent);
 
 export default router;

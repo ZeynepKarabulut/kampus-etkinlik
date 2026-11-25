@@ -16,7 +16,7 @@ app.get("/health", (req, res) => {
    });
 });
 
-app.use("/", eventRoutes);
+app.use("/events", eventRoutes);
 
 app.use((req, res) => {
   res.status(404).json({ error: { message: "Route not found" } });

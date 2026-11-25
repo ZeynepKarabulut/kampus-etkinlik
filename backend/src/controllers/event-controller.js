@@ -1,82 +1,101 @@
 import Event from "../models/event-model.js";
+import mongoose from "mongoose";
+import { todayStart } from "../utils/date.js";
 
-const createResponse = function (res, status, content) {
-  res.status(status).json(content);
-};
-export const listEvents = async (req, res) => {
+function notFound(res) {
+    return res.status(404).json({ error: { message: "Event not found" } });
+}
+
+const KORUNAN_ALANLAR = ["_id", "createdAt", "updatedAt", "__v"];
+
+// Tüm etkinlikleri listele ve filtrele (GET /events)
+export async function listEvents(req, res, next) {
     try {
-        const events = await Event.find();
-        console.log("Veritabanından gelen etkinlikler:", events); // <-- Bu satırı ekle
-        
-        if (!events || events.length === 0) {
-            return res.status(404).json({ status: "Böyle bir etkinlik yok" });
+        const { category, search } = req.query;
+        const filter = {};
+        if (category) filter.category = category;
+        if (search) {
+            const guvenli = search.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+            filter.title = { $regex: guvenli, $options: "i" };
         }
-        res.status(200).json(events);
+        const events = await Event.find(filter).sort({ date: 1 });
+        res.json(events);
+    } catch (err) {
+        next(err);
+    }
+}
+
+// Yaklaşan etkinlikler (GET /events/upcoming)
+export async function getUpcomingEvents(req, res, next) {
+    try {
+        const events = await Event.find({ 
+            date: { $gte: todayStart() } 
+        }).sort({ date: 1 });
+        res.json(events);
+    } catch (err) {
+        next(err);
+    }
+}
+
+// Yeni etkinlik ekle (POST /events)
+export async function addEvent(req, res, next) {
+    try {
+        const newEvent = await Event.create(req.body);
+        res.status(201).json(newEvent);
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        res.status(400).json({ error: { message: error.message } });
     }
-};
+}
 
-// Yeni etkinlik ekleme (POST)
-const addEvent = async function (req, res) {
-  try {
-    const newEvent = await Event.create(req.body);
-    createResponse(res, 201, newEvent);
-  } catch (error) {
-    createResponse(res, 400, error);
-  }
-};
-
-// Belirli bir etkinliği getirme (GET /:id)
-const getEvent = async function (req, res) {
-  try {
-    const event = await Event.findById(req.params.id).exec();
-    if (!event) {
-      createResponse(res, 404, { status: "Böyle bir etkinlik yok" });
-      return;
+// Tekil etkinlik getir (GET /events/:id)
+export async function getEvent(req, res, next) {
+    try {
+        if (!mongoose.isValidObjectId(req.params.id)) return notFound(res);
+        const event = await Event.findById(req.params.id).exec();
+        if (!event) return notFound(res);
+        res.json(event);
+    } catch (error) {
+        next(error);
     }
-    createResponse(res, 200, event);
-  } catch (error) {
-    createResponse(res, 404, { status: "Böyle bir etkinlik yok" });
-  }
-};
+}
 
-// Belirli bir etkinliği güncelleme (PUT /:id)
-const updateEvent = async function (req, res) {
-  try {
-    const updatedEvent = await Event.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true }
-    );
-    if (!updatedEvent) {
-      createResponse(res, 404, { status: "Böyle bir etkinlik yok" });
-      return;
+// Etkinlik güncelle (PATCH /events/:id)
+export async function updateEvent(req, res, next) {
+    try {
+        if (!mongoose.isValidObjectId(req.params.id)) return notFound(res);
+        const body = req.body ?? {};
+        if (Object.keys(body).length === 0) {
+            return res.status(400).json({ error: { message: "Body is empty" } });
+        }
+        const korunan = Object.keys(body).filter((k) => KORUNAN_ALANLAR.includes(k));
+        if (korunan.length > 0) {
+            return res.status(400).json({ error: { message: `${korunan.join(", ")} cannot be changed` } });
+        }
+        const event = await Event.findByIdAndUpdate(req.params.id, body, {
+            returnDocument: "after",
+            runValidators: true,
+        });
+        if (!event) return notFound(res);
+        res.json(event);
+    } catch (err) {
+        if (err.name === "ValidationError" || err.name === "CastError") {
+            return res.status(400).json({ error: { message: err.message } });
+        }
+        next(err);
     }
-    createResponse(res, 200, updatedEvent);
-  } catch (error) {
-    createResponse(res, 400, error);
-  }
-};
+}
 
-// Belirli bir etkinliği silme (DELETE /:id)
-const deleteEvent = async function (req, res) {
-  try {
-    const deletedEvent = await Event.findByIdAndDelete(req.params.id);
-    if (!deletedEvent) {
-      createResponse(res, 404, { status: "Böyle bir etkinlik yok" });
-      return;
+// Etkinlik sil (DELETE /events/:id)
+export async function deleteEvent(req, res, next) {
+    try {
+        if (!mongoose.isValidObjectId(req.params.id)) return notFound(res);
+        const event = await Event.findByIdAndDelete(req.params.id);
+        if (!event) return notFound(res);
+        res.status(24).end();
+    } catch (err) {
+        if (err.name === "CastError") {
+            return res.status(400).json({ error: { message: err.message } });
+        }
+        next(err);
     }
-    createResponse(res, 200, { status: deletedEvent.title + " isimli etkinlik silindi" });
-  } catch (error) {
-    createResponse(res, 404, { status: "Böyle bir etkinlik yok" });
-  }
-};
-
-export default {
-  listEvents,
-  addEvent,
-  getEvent,
-  updateEvent,
-  deleteEvent
-};
+}
