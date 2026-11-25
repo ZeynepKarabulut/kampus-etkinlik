@@ -91,7 +91,7 @@ export async function deleteEvent(req, res, next) {
         if (!mongoose.isValidObjectId(req.params.id)) return notFound(res);
         const event = await Event.findByIdAndDelete(req.params.id);
         if (!event) return notFound(res);
-        res.status(24).end();
+        res.status(204).send();
     } catch (err) {
         if (err.name === "CastError") {
             return res.status(400).json({ error: { message: err.message } });
